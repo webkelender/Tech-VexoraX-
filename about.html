@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Tech VexoraX — Websites built to bring in customers</title>
+<meta name="description" content="Tech VexoraX designs and builds fast, mobile-friendly websites for restaurants, hotels, clinics, gyms, online stores and jewellers. Based in Maharashtra, India.">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="favicon.jpg">
+<style>
+:root{
+  --ink:#0a0806; --umber:#120f0a; --deep:#050301;
+  --cream:#f5ead6; --text:#cbd5e1; --muted:#94a3b8;
+  --gold:#d9a866; --gold-light:#f0d9ad; --gold-deep:#a06a2e;
+  --line:rgba(255,255,255,.1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:var(--ink);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
+img,svg{display:block}
+a{color:inherit;text-decoration:none}
+ul,ol{list-style:none}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1280px;margin:0 auto;padding:0 24px}
+.icon{width:20px;height:20px;flex-shrink:0}
+
+/* Buttons */
+.btn{position:relative;overflow:hidden;isolation:isolate;display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:600;font-size:15px;padding:13px 26px;border-radius:999px;white-space:nowrap;transition:transform .25s cubic-bezier(.2,.7,.2,1),box-shadow .3s,border-color .25s,color .25s,background-color .25s,background-position .5s ease}
+.btn-gold{background:linear-gradient(100deg,#c58f4a,#d9a866,#f0d9ad);background-size:200% 100%;background-position:0 50%;color:#1a1006;box-shadow:0 12px 30px rgba(184,130,63,.24)}
+.btn-gold:hover,.btn-gold:focus-visible{background-position:100% 50%;box-shadow:0 16px 38px rgba(184,130,63,.45)}
+.btn-line{border:1px solid rgba(255,255,255,.25);color:var(--cream)}
+
+/* Header buttons: lift, sliding arrow and a light sweep */
+.btn:not(.afb) svg{width:16px;height:16px;transition:transform .25s cubic-bezier(.2,.7,.2,1)}
+.btn:not(.afb):hover,.btn:not(.afb):focus-visible{transform:translateY(-2px)}
+.btn:not(.afb):hover svg,.btn:not(.afb):focus-visible svg{transform:translateX(4px)}
+.btn:not(.afb):active{transform:translateY(0) scale(.97);transition-duration:.08s}
+.btn:not(.afb)::after{content:"";position:absolute;top:0;bottom:0;left:0;width:45%;background:linear-gradient(105deg,transparent,rgba(255,255,255,.55),transparent);transform:translateX(-160%) skewX(-20deg);pointer-events:none}
+.btn:not(.afb):hover::after,.btn:not(.afb):focus-visible::after{transform:translateX(320%) skewX(-20deg);transition:transform .8s ease}
+
+/* Arrow Fill Buttons: the arrow chip grows to fill the whole button on hover (same effect as the home page call-to-action) */
+.afb{--afb-icon:40px;--afb-gap:8px;--afb-ease:cubic-bezier(.785,.135,.15,.86);height:50px;padding:0 calc(var(--afb-icon) + var(--afb-gap) + 16px) 0 26px}
+.afb .afb-label{position:relative;z-index:1}
+.afb .afb-fill{position:absolute;z-index:2;border-radius:999px;top:5px;bottom:5px;right:5px;left:calc(100% - var(--afb-icon) - 5px);transition:inset .45s var(--afb-ease);pointer-events:none}
+.afb:hover .afb-fill,.afb:focus-visible .afb-fill,.afb.is-pressed .afb-fill{inset:0}
+.afb .afb-label-fill{position:absolute;inset:0;z-index:2;display:flex;align-items:center;justify-content:center;padding:0 calc(var(--afb-icon) + var(--afb-gap) + 16px) 0 26px;white-space:nowrap;pointer-events:none;clip-path:inset(5px 5px 5px calc(100% - var(--afb-icon) - 5px) round 999px);transition:clip-path .45s var(--afb-ease)}
+.afb:hover .afb-label-fill,.afb:focus-visible .afb-label-fill,.afb.is-pressed .afb-label-fill{clip-path:inset(0 0 0 0 round 999px)}
+.afb .afb-icon{position:absolute;z-index:3;top:50%;right:5px;width:var(--afb-icon);height:var(--afb-icon);transform:translateY(-50%);display:flex;align-items:center;justify-content:center;overflow:hidden;pointer-events:none}
+.afb .afb-arrow{position:absolute;width:16px;height:16px;transition:transform .45s var(--afb-ease),opacity .45s var(--afb-ease)}
+.afb .afb-arrow-out{transform:translateX(0);opacity:1}
+.afb .afb-arrow-in{transform:translateX(-24px);opacity:0}
+.afb:hover .afb-arrow-out,.afb:focus-visible .afb-arrow-out,.afb.is-pressed .afb-arrow-out{transform:translateX(24px);opacity:0}
+.afb:hover .afb-arrow-in,.afb:focus-visible .afb-arrow-in,.afb.is-pressed .afb-arrow-in{transform:translateX(0);opacity:1}
+/* colours copied from the home page call-to-action buttons */
+.btn-gold.afb{background:#fff;color:#d9a866;box-shadow:none}
+.btn-gold.afb .afb-fill{background:#d9a866}
+.btn-gold.afb .afb-label-fill,.btn-gold.afb .afb-arrow{color:#fff}
+.btn-gold.afb:hover,.btn-gold.afb:focus-visible,.btn-gold.afb.is-pressed{box-shadow:0 12px 24px -6px rgba(0,0,0,.25)}
+.btn-gold.afb:hover .afb-fill,.btn-gold.afb:focus-visible .afb-fill,.btn-gold.afb.is-pressed .afb-fill{background:linear-gradient(90deg,#d9a866,#f0d9ad)}
+.btn-line.afb{border:1px solid rgba(255,255,255,.4);color:#fff}
+.btn-line.afb .afb-fill{background:rgba(255,255,255,.95)}
+.btn-line.afb .afb-label-fill,.btn-line.afb .afb-arrow{color:#b8823f}
+.btn-line.afb:hover,.btn-line.afb:focus-visible,.btn-line.afb.is-pressed{background:rgba(255,255,255,.1)}
+
+/* Navbar (same as the main site) */
+#navbar{position:fixed;top:0;left:0;right:0;z-index:50;transition:background .3s,border-color .3s;background:transparent;border-bottom:1px solid transparent}
+#navbar.scrolled{background:rgba(6,4,2,.86);backdrop-filter:blur(16px);border-bottom-color:rgba(199,152,90,.12)}
+.navbar-inner{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;max-width:1280px;margin:0 auto}
+.logo{display:flex;align-items:center;gap:10px;font-weight:700}
+.logo img{height:30px;width:auto}
+.brand-text{font-size:17px;font-weight:700;letter-spacing:.01em;color:#f8fafc}
+.brand-tech{display:block;font-size:8px;font-weight:600;letter-spacing:.18em;color:var(--muted);margin-bottom:1px}
+.brand-gold{background:linear-gradient(90deg,var(--gold),var(--gold-light));-webkit-background-clip:text;background-clip:text;color:transparent}
+.nav-links{display:none;gap:32px}
+.nav-links a{font-size:14px;color:#cbd5e1;transition:color .2s}
+.nav-links a:hover,.nav-links a[aria-current]{color:var(--gold-light)}
+.navbar-cta{display:none;padding:11px 22px;font-size:14px}
+#menu-btn{display:inline-flex;color:#e2e8f0;padding:4px;transition:color .2s}
+#menu-btn:hover{color:var(--gold-light)}
+#menu-btn line{transform-box:fill-box;transform-origin:center;transition:transform .3s cubic-bezier(.2,.7,.2,1),opacity .2s}
+#menu-btn[aria-expanded=true] line:nth-child(1){transform:translateY(6px) rotate(45deg)}
+#menu-btn[aria-expanded=true] line:nth-child(2){opacity:0}
+#menu-btn[aria-expanded=true] line:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+#mobile-menu{display:none;flex-direction:column;gap:16px;padding:8px 24px 24px;background:var(--umber);border-top:1px solid var(--line)}
+#mobile-menu.open{display:flex}
+#mobile-menu a{font-size:15px;color:#cbd5e1}
+#mobile-menu a[aria-current]{color:var(--gold-light)}
+#mobile-menu a.btn-gold{color:#1a1006;margin-top:4px}
+@media(min-width:768px){.nav-links{display:flex}.navbar-cta{display:inline-flex}#menu-btn{display:none}}
+
+/* Hero */
+.hero{position:relative;padding:168px 0 96px;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:-20% auto auto -10%;width:720px;height:720px;background:radial-gradient(circle,rgba(217,168,102,.16),transparent 65%);pointer-events:none}
+.hero .wrap{position:relative}
+.hero h1{font-size:clamp(34px,6.2vw,72px);line-height:1.08;letter-spacing:-.025em;font-weight:700;color:var(--cream);max-width:15em}
+.hero .lead{font-size:clamp(17px,2vw,20px);line-height:1.65;color:var(--text);max-width:36em;margin-top:28px}
+.hero .actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:40px}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.hero h1,.hero .lead,.hero .actions{opacity:0;animation:rise .8s cubic-bezier(.2,.7,.2,1) forwards}
+.hero .lead{animation-delay:.15s}
+.hero .actions{animation-delay:.3s}
+
+/* Sections */
+.block{padding:88px 0;border-top:1px solid var(--line);scroll-margin-top:72px}
+.split{display:grid;gap:32px}
+@media(min-width:900px){.split{grid-template-columns:5fr 7fr;gap:72px}}
+h2{font-size:clamp(26px,3.6vw,40px);line-height:1.15;letter-spacing:-.015em;font-weight:700;color:var(--cream)}
+.prose p{font-size:17px;line-height:1.75;max-width:38em}
+.prose p+p{margin-top:20px}
+
+/* What every site includes */
+.includes{display:grid;gap:0 48px;margin-top:64px}
+@media(min-width:720px){.includes{grid-template-columns:1fr 1fr}}
+.includes div{padding:22px 0;border-top:1px solid var(--line)}
+@media(min-width:720px){.includes div:last-child:nth-child(odd){grid-column:1/-1}}
+.includes dt{font-size:17px;font-weight:600;color:var(--cream)}
+.includes dd{margin-top:6px;font-size:15px;color:var(--muted);max-width:30em}
+
+/* Industries */
+.industries-head{max-width:34em}
+.industries-head p{margin-top:16px;font-size:17px;color:var(--text)}
+.rows{margin-top:48px;border-bottom:1px solid var(--line)}
+.row{display:grid;gap:6px 32px;align-items:baseline;padding:26px 0;border-top:1px solid var(--line);transition:padding .25s,background .25s}
+.row .name{font-size:clamp(26px,4.4vw,46px);line-height:1.1;font-weight:700;letter-spacing:-.02em;color:var(--cream);transition:color .2s}
+.row .feat{font-size:15px;color:var(--muted);max-width:32em}
+.row .go{display:inline-flex;align-items:center;gap:6px;margin-top:6px;font-size:14px;font-weight:600;color:var(--gold);white-space:nowrap}
+.row .go svg{width:14px;height:14px;transition:transform .25s cubic-bezier(.2,.7,.2,1)}
+.row:hover .go svg,.row:focus-visible .go svg{transform:translateX(6px)}
+.row:hover,.row:focus-visible{padding-left:14px;background:rgba(217,168,102,.05)}
+.row:hover .name,.row:focus-visible .name{color:var(--gold-light)}
+@media(min-width:900px){.row{grid-template-columns:minmax(0,5fr) minmax(0,5fr) auto;padding:30px 0}.row .go{margin-top:0}}
+
+/* Process */
+.steps{counter-reset:s;position:relative}
+.steps li{counter-increment:s;position:relative;padding:0 0 36px 64px}
+.steps li:last-child{padding-bottom:0}
+.steps li::before{content:counter(s);position:absolute;left:0;top:0;width:40px;height:40px;border-radius:50%;border:1px solid rgba(217,168,102,.45);color:var(--gold-light);font-weight:600;font-size:15px;display:flex;align-items:center;justify-content:center;background:var(--ink)}
+.steps li::after{content:"";position:absolute;left:19.5px;top:44px;bottom:4px;width:1px;background:var(--line)}
+.steps li:last-child::after{display:none}
+.steps h3{font-size:20px;font-weight:600;color:var(--cream);line-height:40px}
+.steps p{font-size:16px;color:var(--muted);margin-top:2px;max-width:30em}
+
+/* Contact */
+.contact-list{display:grid;gap:0}
+.contact-list li{display:flex;flex-direction:column;gap:2px;padding:18px 0;border-top:1px solid var(--line)}
+.contact-list li:last-child{border-bottom:1px solid var(--line)}
+.contact-list .k{font-size:13px;color:var(--muted)}
+.contact-list .v{font-size:18px;color:var(--cream);font-weight:500;overflow-wrap:anywhere}
+.contact-list a.v:hover{color:var(--gold-light)}
+.contact-copy p{margin-top:16px;font-size:17px;line-height:1.7;max-width:30em}
+.contact-copy .actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:32px}
+
+/* Footer (same as the main site) */
+footer{background:var(--deep);color:var(--muted);padding:64px 24px 32px;border-top:1px solid rgba(255,255,255,.06)}
+.footer-grid{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr;gap:40px;margin-bottom:40px}
+@media(min-width:640px){.footer-grid{grid-template-columns:1fr 1fr}}
+@media(min-width:1024px){.footer-grid{grid-template-columns:repeat(4,1fr)}}
+.footer-brand p{font-size:14px;margin-top:12px}
+footer h4{color:#fff;font-weight:600;font-size:14px;margin-bottom:12px}
+footer li{font-size:14px;padding:4px 0}
+footer li a:hover{color:var(--gold-light)}
+.footer-bottom{max-width:1280px;margin:0 auto;border-top:1px solid #1e293b;padding-top:24px;display:flex;flex-direction:column;align-items:center;gap:16px;font-size:12px}
+@media(min-width:640px){.footer-bottom{flex-direction:row;justify-content:space-between}}
+.footer-bottom a:hover{color:var(--gold-light)}
+
+/* Floating WhatsApp button */
+.wa-float{position:fixed;bottom:26px;right:26px;z-index:60;width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;background:linear-gradient(145deg,#2fe27a,#20b858);box-shadow:0 10px 28px rgba(32,184,88,.4),0 2px 8px rgba(0,0,0,.25),inset 0 1px 1px rgba(255,255,255,.35);transition:transform .25s cubic-bezier(.34,1.56,.64,1)}
+.wa-float:hover{transform:scale(1.08) translateY(-2px)}
+.wa-float:active{transform:scale(.95)}
+.wa-float::before{content:"";position:absolute;inset:0;border-radius:50%;animation:wa-pulse 2.6s ease-out infinite;pointer-events:none}
+@keyframes wa-pulse{0%{box-shadow:0 0 0 0 rgba(37,211,102,.5)}70%{box-shadow:0 0 0 14px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+@media(max-width:639px){.hero .actions,.contact-copy .actions{flex-direction:column}.hero .actions .btn,.contact-copy .actions .btn{width:100%}.wa-float{bottom:18px;right:18px;width:52px;height:52px}.hero{padding:132px 0 72px}.block{padding:64px 0}}
+
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .hero h1,.hero .lead,.hero .actions{animation:none;opacity:1}
+  .row,.row .name,.wa-float,.btn,.btn svg,.row .go svg,#menu-btn line{transition:none}
+  .btn::after,.wa-float::before{animation:none;display:none}
+  .afb .afb-fill,.afb .afb-label-fill,.afb .afb-arrow{transition:none}
+  .btn:not(.afb):hover,.btn:not(.afb):focus-visible,.btn:not(.afb):hover svg,.btn:not(.afb):focus-visible svg,.row:hover .go svg{transform:none}
+}
+</style>
+</head>
+<body>
+
+<header id="navbar">
+  <div class="navbar-inner">
+    <a class="logo" href="index.html" aria-label="Tech VexoraX home"><img src="logo-icon.png" alt=""><span class="brand-text"><span class="brand-tech">TECH</span>VEXORA<span class="brand-gold">X</span></span></a>
+    <nav class="nav-links" aria-label="Main">
+      <a href="index.html">Home</a><a href="index.html#services">Services</a><a href="gallery.html">Portfolio</a>
+      <a href="pricing.html">Pricing</a><a href="about.html" aria-current="page">About Us</a><a href="#footer">Contact</a>
+    </nav>
+    <a href="https://wa.me/919987438639?text=Hi%2C%20I%27d%20like%20a%20free%20consultation%20for%20my%20website." target="_blank" rel="noopener" class="btn btn-gold navbar-cta">Get Free Consultation<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+    <button id="menu-btn" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+  <div id="mobile-menu">
+    <a href="index.html">Home</a><a href="index.html#services">Services</a><a href="gallery.html">Portfolio</a>
+    <a href="pricing.html">Pricing</a><a href="about.html" aria-current="page">About Us</a><a href="#footer">Contact</a>
+    <a href="https://wa.me/919987438639?text=Hi%2C%20I%27d%20like%20a%20free%20consultation%20for%20my%20website." target="_blank" rel="noopener" class="btn btn-gold">Get Free Consultation<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <h1>We build websites that help businesses get found, trusted and contacted.</h1>
+      <p class="lead">Tech VexoraX designs and builds fast, mobile-friendly websites for restaurants, hotels, clinics, gyms, online stores and jewellers. We are based in Maharashtra, India.</p>
+      <div class="actions">
+        <a href="https://wa.me/919987438639?text=Hi%2C%20I%27d%20like%20a%20free%20consultation%20for%20my%20website." target="_blank" rel="noopener" class="btn btn-gold afb"><span class="afb-label">Get a free consultation</span><span class="afb-fill" aria-hidden="true"></span><span class="afb-label-fill" aria-hidden="true">Get a free consultation</span><span class="afb-icon" aria-hidden="true"><svg class="afb-arrow afb-arrow-out" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg><svg class="afb-arrow afb-arrow-in" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></a>
+        <a href="gallery.html" class="btn btn-line afb"><span class="afb-label">See our work</span><span class="afb-fill" aria-hidden="true"></span><span class="afb-label-fill" aria-hidden="true">See our work</span><span class="afb-icon" aria-hidden="true"><svg class="afb-arrow afb-arrow-out" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg><svg class="afb-arrow afb-arrow-in" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="what-we-do">
+    <div class="wrap">
+      <div class="split">
+        <h2>A website should do a job for your business.</h2>
+        <div class="prose">
+          <p>We design each site around what your customers need to do: read a menu, book a room, request an appointment, join a gym, buy a product or ask about a piece of jewellery.</p>
+          <p>Every site is built to work on a phone first, to load quickly and to follow search and security basics. We also connect WhatsApp, enquiry forms and maps, so customers can reach you the way they already prefer.</p>
+        </div>
+      </div>
+      <dl class="includes">
+        <div><dt>Modern, distinctive design</dt><dd>Clean, creative layouts designed to turn visitors into enquiries.</dd></div>
+        <div><dt>Fast loading</dt><dd>Lightweight pages that load quickly, which helps visitors and search rankings.</dd></div>
+        <div><dt>Mobile first</dt><dd>Fully responsive on every device and screen size.</dd></div>
+        <div><dt>SEO and security ready</dt><dd>Built with search best practices and sensible security.</dd></div>
+        <div><dt>24/7 support</dt><dd>Message us on WhatsApp or email whenever you need help.</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="block" id="industries">
+    <div class="wrap">
+      <div class="industries-head">
+        <h2>Who we build for</h2>
+        <p>Every industry needs different features. Open a gallery to see sample designs for yours.</p>
+      </div>
+      <div class="rows">
+        <a class="row" href="restaurant-gallery.html"><span class="name">Restaurants</span><span class="feat">Online menu, table reservations, QR ordering, WhatsApp orders, Google reviews</span><span class="go">View gallery <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></a>
+        <a class="row" href="hotel-gallery.html"><span class="name">Hotels</span><span class="feat">Room showcase, booking enquiry forms, gallery, maps, customer reviews</span><span class="go">View gallery <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></a>
+        <a class="row" href="clinic-gallery.html"><span class="name">Clinics</span><span class="feat">Appointment booking, doctor profiles, patient information, contact forms</span><span class="go">View gallery <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></a>
+        <a class="row" href="gym-gallery.html"><span class="name">Gyms</span><span class="feat">Membership plans, trainer profiles, class schedules, lead forms, transformation gallery</span><span class="go">View gallery <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></a>
+        <a class="row" href="ecommerce-gallery.html"><span class="name">Online stores</span><span class="feat">Product catalog, shopping cart, payment gateway, order tracking, inventory</span><span class="go">View gallery <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></a>
+        <a class="row" href="jewellery-gallery.html"><span class="name">Jewellers</span><span class="feat">Premium gallery, collection showcase, enquiry forms, WhatsApp integration</span><span class="go">View gallery <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="process">
+    <div class="wrap">
+      <div class="split">
+        <h2>How a project runs</h2>
+        <ol class="steps">
+          <li><h3>Discover</h3><p>We learn about your business, your goals and what you need the website to do.</p></li>
+          <li><h3>Plan</h3><p>We plan the structure, content and features of your website.</p></li>
+          <li><h3>Design</h3><p>We create a UI and UX design that represents your brand.</p></li>
+          <li><h3>Develop</h3><p>We build your website with clean code and modern technology.</p></li>
+          <li><h3>Launch</h3><p>We test everything, then launch your website.</p></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="contact">
+    <div class="wrap">
+      <div class="split">
+        <div class="contact-copy">
+          <h2>Tell us about your business.</h2>
+          <p>Send us a message on WhatsApp or by email. Tell us what you do and what you want your website to achieve, and we will come back with ideas and next steps.</p>
+          <div class="actions">
+            <a href="https://wa.me/919987438639?text=Hi%2C%20I%27d%20like%20a%20free%20consultation%20for%20my%20website." target="_blank" rel="noopener" class="btn btn-gold afb"><span class="afb-label">Message us on WhatsApp</span><span class="afb-fill" aria-hidden="true"></span><span class="afb-label-fill" aria-hidden="true">Message us on WhatsApp</span><span class="afb-icon" aria-hidden="true"><svg class="afb-arrow afb-arrow-out" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg><svg class="afb-arrow afb-arrow-in" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></a>
+            <a href="mailto:techvexorax@gmail.com" class="btn btn-line afb"><span class="afb-label">Send an email</span><span class="afb-fill" aria-hidden="true"></span><span class="afb-label-fill" aria-hidden="true">Send an email</span><span class="afb-icon" aria-hidden="true"><svg class="afb-arrow afb-arrow-out" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg><svg class="afb-arrow afb-arrow-in" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span></a>
+          </div>
+        </div>
+        <ul class="contact-list">
+          <li><span class="k">WhatsApp</span><a class="v" href="https://wa.me/919987438639" target="_blank" rel="noopener">+91 99874 38639</a></li>
+          <li><span class="k">Email</span><a class="v" href="mailto:techvexorax@gmail.com">techvexorax@gmail.com</a></li>
+          <li><span class="k">Instagram</span><a class="v" href="https://www.instagram.com/techvexorax" target="_blank" rel="noopener">@techvexorax</a></li>
+          <li><span class="k">Based in</span><span class="v">Maharashtra, India</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer id="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a class="logo" href="index.html" style="color:#fff" aria-label="Tech VexoraX home"><img src="logo-icon.png" alt=""><span class="brand-text"><span class="brand-tech">TECH</span>VEXORA<span class="brand-gold">X</span></span></a>
+      <p>We build modern, fast, and result-driven websites for businesses of all sizes.</p>
+    </div>
+    <div><h4>Quick Links</h4><ul><li><a href="index.html">Home</a></li><li><a href="index.html#services">Services</a></li><li><a href="about.html">About Us</a></li><li><a href="#footer">Contact</a></li></ul></div>
+    <div><h4>Our Services</h4><ul><li>Restaurant Website</li><li>Hotel Website</li><li>Clinic Website</li><li>Gym Website</li><li>E-commerce Website</li><li>Jewellery Website</li></ul></div>
+    <div><h4>Contact Us</h4><ul><li><a href="mailto:techvexorax@gmail.com">techvexorax@gmail.com</a></li><li><a href="https://wa.me/919987438639" target="_blank" rel="noopener">+91 99874 38639</a></li><li>Maharashtra, India</li></ul></div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Tech VexoraX. All Rights Reserved.</p>
+    <a href="https://www.instagram.com/techvexorax" target="_blank" rel="noopener">Instagram</a>
+  </div>
+</footer>
+
+<a href="https://wa.me/919987438639" target="_blank" rel="noopener" class="wa-float" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" width="26" height="26" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+</a>
+
+<script>
+(function(){
+  var nav=document.getElementById('navbar');
+  function onScroll(){nav.classList.toggle('scrolled',window.scrollY>20)}
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+  var btn=document.getElementById('menu-btn'),menu=document.getElementById('mobile-menu');
+  btn.addEventListener('click',function(){btn.setAttribute('aria-expanded',menu.classList.toggle('open'))});
+  menu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){menu.classList.remove('open');btn.setAttribute('aria-expanded','false')})});
+  document.querySelectorAll('.afb').forEach(function(b){
+    var timer=null;
+    b.addEventListener('pointerdown',function(e){if(e.pointerType==='mouse')return;clearTimeout(timer);b.classList.add('is-pressed')});
+    function release(e){if(e.pointerType==='mouse')return;timer=setTimeout(function(){b.classList.remove('is-pressed')},450)}
+    b.addEventListener('pointerup',release);b.addEventListener('pointercancel',release);
+    var href=b.getAttribute('href');
+    if(!href||b.target==='_blank'||href.indexOf('mailto:')===0||href.charAt(0)==='#')return;
+    b.addEventListener('click',function(e){
+      if(e.metaKey||e.ctrlKey||e.shiftKey||e.button!==0)return;
+      e.preventDefault();b.classList.add('is-pressed');
+      setTimeout(function(){window.location.href=href},450);
+    });
+  });
+})();
+</script>
+</body>
+</html>
